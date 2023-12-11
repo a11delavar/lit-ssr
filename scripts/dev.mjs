@@ -5,10 +5,9 @@ import bodyParser from 'koa-bodyparser'
 import koaStatic from 'koa-static'
 import compress from 'koa-compress'
 import { nodeResolve } from 'koa-node-resolve'
-import { render, } from '@lit-labs/ssr'
+import { render, html } from '@lit-labs/ssr'
 import { RenderResultReadable } from '@lit-labs/ssr/lib/render-result-readable.js'
 import { build } from 'esbuild'
-import { html } from 'lit'
 import '../application/index.mjs'
 
 await build({
@@ -21,25 +20,23 @@ await build({
 
 const router = new Router
 
-router.get('/', ctx => {
+router.get('/:name', ctx => {
 	ctx.response.type = 'html'
+	const { name } = ctx.params
 	ctx.body = new RenderResultReadable(render(html`
 		<html>
 			<head>
 				<meta charset='utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
-				<title>Title</title>
+				<title>${name ?? 'There'}</title>
 				<script type='module' src='../dist/index.js'></script>
 			</head>
 			<body>
-				<h1>Shopping list</h1>
-				<app-hello name='World'></app-hello>
+				<app-hello name=${name}></app-hello>
 			</body>
 		</html>
 	`))
 })
-
-const port = process.env.PORT || 8000
 
 new Koa().use(logger())
 	.use(bodyParser())
@@ -48,4 +45,4 @@ new Koa().use(logger())
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(compress())
-	.listen(port, '0.0.0.0', () => console.log(`listening on http://localhost:${port}...`))
+	.listen(8000, '0.0.0.0', () => console.log(`listening on http://localhost:8000...`))
