@@ -1,0 +1,25 @@
+{
+	"name": "lit-ssr-test",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"lit": "2.x",
+		"@webcomponents/template-shadowroot": "0.1.0",
+		"koa": "2.x",
+		"koa-bodyparser": "4.x",
+		"koa-compress": "5.x",
+		"koa-logger": "3.x",
+		"koa-node-resolve": "1.0.0-pre.9",
+		"koa-router": "7.x",
+		"koa-static": "5.x",
+		"esbuild": "0.x",
+		"esbuild-server": "0.x",
+		"@lit-labs/ssr": "x"
+	}
+}
