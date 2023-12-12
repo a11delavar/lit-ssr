@@ -20,10 +20,11 @@ await build({
 
 const router = new Router
 
-router.get('/:name', ctx => {
+router.get('/:name?', ctx => {
 	ctx.response.type = 'html'
 	const { name } = ctx.params
 	ctx.body = new RenderResultReadable(render(html`
+		<!DOCTYPE html>
 		<html>
 			<head>
 				<meta charset='utf-8' />
@@ -32,7 +33,7 @@ router.get('/:name', ctx => {
 				<script type='module' src='../dist/index.js'></script>
 			</head>
 			<body>
-				<app-hello name=${name}></app-hello>
+				<app-hello name=${name ?? 'There'}></app-hello>
 			</body>
 		</html>
 	`))

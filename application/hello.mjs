@@ -1,11 +1,11 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html } from 'lit'
 
 class Hello extends LitElement {
 	static properties = { name: { type: String } }
 
 	render() {
 		return html`
-			<p @click=${() => console.log('Click')}>Hello ${this.name}</p>
+			<p @click=${() => console.log('Click')}>Hello ${this.name}!</p>
 		`
 	}
 }
