@@ -20,6 +20,9 @@
 		"koa-static": "x",
 		"esbuild": "0.x",
 		"esbuild-server": "0.x",
+		"@3mo/button": "x",
+		"@3mo/grid": "x",
+		"@3mo/flex": "x",
 		"@lit-labs/ssr": "x"
 	},
 	"overrides": {
